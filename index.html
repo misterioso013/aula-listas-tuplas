@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas e Tuplas em Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        .examples {
+            margin-bottom: 1rem;
+        }
+
+        .erro {
+            display: none;
+            background-color: #f00;
+            color: #fff;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .erro.ativo {
+            display: block;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        .examples h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .examples p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Listas e Tuplas em Python</h1>
+    <p>As listas e tuplas são estruturas de dados que permitem armazenar vários valores em uma única variável. A diferença entre elas é que as listas são mutáveis, ou seja, podem ser alteradas, enquanto as tuplas são imutáveis, ou seja, não podem ser alteradas.</p>
+    </header>
+    <main>
+        <div class="examples">
+        <h2>Exemplo prático de listas</h2>
+        <div id="exemplo-lista"></div>
+        <button id="testar-exemplo-lista">Testar exemplo</button>
+    </div>
+    <div class="examples">
+        <h2>Exemplo prático de tuplas</h2>
+        <div id="exemplo-tupla"></div>
+        <button id="testar-exemplo-tupla">Testar exemplo</button>
+    </div>
+
+    <div class="erro">
+        <h2>Erro ao tentar alterar uma tupla</h2>
+        <p>Quando tentamos alterar um elemento de uma tupla, recebemos um erro que impede a execução do programa. Isso acontece porque as tuplas são imutáveis, ou seja, não podem ser alteradas.</p>
+    </div>
+    </main>
+
+    <script>
+        const exemploLista = document.getElementById('exemplo-lista');
+        const testarExemploLista = document.getElementById('testar-exemplo-lista');
+
+        testarExemploLista.addEventListener('click', () => {
+            const lista = [];
+            let opcao = '';
+
+            while (opcao !== 'sair') {
+                opcao = prompt(`Lista atual: ${lista.join(', ')}\n\nDigite uma opção:\n\n1 - Adicionar um elemento\n2 - Excluir um elemento\n3 - Alterar um elemento\n\nDigite "sair" para encerrar`);
+
+                if (opcao === '1') {
+                    const elemento = prompt('Digite o elemento que deseja adicionar');
+                    lista.push(elemento);
+                } else if (opcao === '2') {
+                    const indice = prompt('Digite o índice do elemento que deseja excluir');
+                    lista.splice(indice, 1);
+                } else if (opcao === '3') {
+                    const indice = prompt('Digite o índice do elemento que deseja alterar');
+                    const elemento = prompt('Digite o novo elemento');
+                    lista[indice] = elemento;
+                }
+            }
+
+            exemploLista.innerHTML = `Lista final: ${lista.join(', ')}`;
+        });
+
+        const exemploTupla = document.getElementById('exemplo-tupla');
+        const testarExemploTupla = document.getElementById('testar-exemplo-tupla');
+
+        lista_tupla = ['a', 'b', 'c'];
+        exemploTupla.innerHTML = `Tupla atual: ${lista_tupla.join(', ')}`;
+
+        testarExemploTupla.addEventListener('click', () => {
+            document.querySelector('.erro').classList.add('ativo');
+        });
+    </script>
+</body>
+</html>
